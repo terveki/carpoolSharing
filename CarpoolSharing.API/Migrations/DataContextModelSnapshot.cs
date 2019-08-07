@@ -68,7 +68,7 @@ namespace CarpoolSharing.API.Migrations
                     b.Property<int>("RideId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("CarId");
+                    b.Property<int>("CarId");
 
                     b.Property<DateTime>("EndDate");
 
@@ -102,19 +102,20 @@ namespace CarpoolSharing.API.Migrations
                     b.HasOne("CarpoolSharing.API.Models.Employee", "Employee")
                         .WithMany("EmployeeRides")
                         .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("CarpoolSharing.API.Models.Ride", "Ride")
                         .WithMany("EmployeeRides")
                         .HasForeignKey("RideId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("CarpoolSharing.API.Models.Ride", b =>
                 {
-                    b.HasOne("CarpoolSharing.API.Models.Car")
+                    b.HasOne("CarpoolSharing.API.Models.Car", "Car")
                         .WithMany("Rides")
-                        .HasForeignKey("CarId");
+                        .HasForeignKey("CarId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
         }

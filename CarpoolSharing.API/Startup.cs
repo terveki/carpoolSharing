@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using CarpoolSharing.API.Data;
+using AutoMapper;
 
 namespace CarpoolSharing.API
 {
@@ -28,9 +29,14 @@ namespace CarpoolSharing.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnction")));
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddJsonOptions(opt => {
+                        opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                    });
             services.AddCors();
+            services.AddAutoMapper();
             services.AddTransient<Seed>();
+            services.AddScoped<IRidesRepository, RidesRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

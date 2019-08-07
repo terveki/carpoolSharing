@@ -1,17 +1,17 @@
 using System;
 using System.Collections.Generic;
+using CarpoolSharing.API.Models;
 
-namespace CarpoolSharing.API.Models
+namespace CarpoolSharing.API.Dtos
 {
-    public class Ride
+    public class RideForDetailedDto
     {
         public int RideId { get; set; }
         public string StartLocation { get; set; }
         public string EndLocation { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public ICollection<EmployeeRide> EmployeeRides { get; set; }
-        public Car Car { get; set; }
-        public int CarId { get; set; }
+        public ICollection<EmployeeForDetailedDto> Employee { get; set; }
+        public CarForDetailedDto Car { get; set; }
     }
 }

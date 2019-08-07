@@ -1,3 +1,4 @@
+using System.Linq;
 using CarpoolSharing.API.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +17,15 @@ namespace CarpoolSharing.API.Data
         {
             modelBuilder.Entity<EmployeeRide>()
                 .HasKey(er => new {  er.EmployeeId, er.RideId });
+
+                var cascadeFKs = modelBuilder.Model.GetEntityTypes()
+                    .SelectMany(t => t.GetForeignKeys())
+                    .Where(fk => !fk.IsOwnership && fk.DeleteBehavior == DeleteBehavior.Cascade);
+
+                foreach (var fk in cascadeFKs)
+                    fk.DeleteBehavior = DeleteBehavior.Restrict;
+
+                base.OnModelCreating(modelBuilder);
         }
     }
 }

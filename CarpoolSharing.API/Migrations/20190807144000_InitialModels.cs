@@ -61,7 +61,7 @@ namespace CarpoolSharing.API.Migrations
                     EndLocation = table.Column<string>(nullable: true),
                     StartDate = table.Column<DateTime>(nullable: false),
                     EndDate = table.Column<DateTime>(nullable: false),
-                    CarId = table.Column<int>(nullable: true)
+                    CarId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -89,13 +89,13 @@ namespace CarpoolSharing.API.Migrations
                         column: x => x.EmployeeId,
                         principalTable: "Employees",
                         principalColumn: "EmployeeId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_EmployeeRide_Rides_RideId",
                         column: x => x.RideId,
                         principalTable: "Rides",
                         principalColumn: "RideId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(

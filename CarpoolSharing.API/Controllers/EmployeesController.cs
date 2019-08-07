@@ -7,22 +7,22 @@ namespace CarpoolSharing.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CarsController : ControllerBase
+    public class EmployeesController : ControllerBase
     {
-        
         private readonly DataContext _context;
-        public CarsController(DataContext context)
+        public EmployeesController(DataContext context)
         {
             _context = context;
 
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetCars()
+        public async Task<IActionResult> GetEmployees()
         {
-            var cars = await _context.Cars.ToListAsync();
+            var users = await _context.Employees.ToListAsync();
 
-            return Ok(cars);
+            return Ok(users);
         }
+        
     }
 }
