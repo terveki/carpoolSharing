@@ -1,0 +1,93 @@
+[
+  {
+    "Plates": "DU-123-AA",
+    "Name": "Fiat Bravo cool car",
+    "CarType": "Fiat Bravo",
+    "Color": "Yellow",
+    "NoOfSeats": "5",
+    "Rides": [
+
+      {
+      "StartLocation": "Metkovic",
+      "EndLocation": "Zagreb",
+      "StartDate": "2019-08-15 10:00:00",
+      "EndDate": "2019-08-17 12:00:00"
+      },
+      {
+      "StartLocation": "Zagreb",
+      "EndLocation": "Pula",
+      "StartDate": "2019-08-18 10:00:00",
+      "EndDate": "2019-08-19 12:00:00"
+      }
+  ]
+  },
+  {
+    "Plates": "DU-124-GF",
+    "Name": "Fiat for Beginers",
+    "CarType": "Fiat Uno",
+    "Color": "Yellow",
+    "NoOfSeats": "5",
+    "Rides": [
+
+      {
+      "StartLocation": "Pula",
+      "EndLocation": "Rijeka",
+      "StartDate": "2019-08-15 10:00:00",
+      "EndDate": "2019-08-20 12:00:00"
+      },
+      {
+        "StartLocation": "Split",
+        "EndLocation": "Dubrovnik",
+        "StartDate": "2019-09-02 10:00:00",
+        "EndDate": "2019-09-10 12:00:00"
+      },
+      {
+      "StartLocation": "Zagreb",
+      "EndLocation": "Pula",
+      "StartDate": "2019-09-15 10:00:00",
+      "EndDate": "2019-09-20 12:00:00"
+      }
+  ]
+  },
+  {
+    "Plates": "DU-125-AS",
+    "Name": "The best ever",
+    "CarType": "Renault Clio",
+    "Color": "Grey",
+    "NoOfSeats": "4",
+    "Rides": [
+      {
+      "StartLocation": "Split",
+      "EndLocation": "Dubrovnik",
+      "StartDate": "2019-08-15 10:00:00",
+      "EndDate": "2019-08-21 12:00:00"
+      },
+      {
+        "StartLocation": "Split",
+        "EndLocation": "Dubrovnik",
+        "StartDate": "2019-10-02 10:00:00",
+        "EndDate": "2019-10-10 12:00:00"
+      },
+      {
+        "StartLocation": "Zagreb",
+        "EndLocation": "Pula",
+        "StartDate": "2019-08-15 10:00:00",
+        "EndDate": "2019-10-20 12:00:00"
+      }
+  ]
+  },
+  {
+    "Plates": "DU-111-AD",
+    "Name": "Family car",
+    "CarType": "Dacia",
+    "Color": "Black",
+    "NoOfSeats": "7"
+  },
+  {
+    "Plates": "DU-222-DD",
+    "Name": "Workers car",
+    "CarType": "Cangoo",
+    "Color": "Grey",
+    "NoOfSeats": "7"
+  }
+]

@@ -1,0 +1,102 @@
+[
+    {
+     "Name": "Ante Antic",
+	 "IsDriver": true
+    },
+    {
+     "Name": "Luka Antic",
+	 "IsDriver": true
+    },
+    {
+     "Name": "Ivan Antic",
+	 "IsDriver": true
+    },
+    {
+     "Name": "Miro Antic",
+	 "IsDriver": true
+    },
+    {
+     "Name": "Antun Ivic",
+	 "IsDriver": true
+    },
+    {
+     "Name": "Filip Ivic",
+	 "IsDriver": true
+    },
+    {
+     "Name": "Luka Lukic",
+	 "IsDriver": true
+    },
+    {
+     "Name": "Ante Parmac",
+	 "IsDriver": true
+    },
+    {
+     "Name": "Ante Lukic",
+	 "IsDriver": true
+    },
+    {
+     "Name": "Miro Lukic",
+	 "IsDriver": false
+    },
+    {
+     "Name": "Ivo Antic",
+	 "IsDriver": false
+    },
+    {
+     "Name": "Ante Milic",
+	 "IsDriver": false
+    },
+    {
+     "Name": "Kreso Milic",
+	 "IsDriver": false
+    },
+    {
+     "Name": "Stipe Ivic",
+	 "IsDriver": false
+    },
+    {
+     "Name": "Milan Ivic",
+	 "IsDriver": false
+    },
+    {
+     "Name": "Pavao Antic",
+	 "IsDriver": false
+    },
+    {
+     "Name": "Ana Antic",
+	 "IsDriver": false
+    },
+    {
+     "Name": "Milena Antic",
+	 "IsDriver": false
+    },
+    {
+     "Name": "Anica Kozulj",
+	 "IsDriver": false
+    },
+    {
+     "Name": "Anita Vekic",
+	 "IsDriver": true
+    },
+    {
+     "Name": "Slavica Parmac",
+	 "IsDriver": true
+    },
+    {
+     "Name": "Marija Milic",
+	 "IsDriver": true
+    },
+    {
+     "Name": "Luko Slavic",
+	 "IsDriver": true
+    },
+    {
+     "Name": "Frano MIlicin",
+	 "IsDriver": true
+    },
+    {
+     "Name": "Kruno Kosic",
+	 "IsDriver": true
+    }	  
+]
