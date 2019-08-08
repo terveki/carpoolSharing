@@ -9,19 +9,19 @@ namespace CarpoolSharing.API.Controllers
     [ApiController]
     public class EmployeesController : ControllerBase
     {
-        private readonly DataContext _context;
-        public EmployeesController(DataContext context)
+        private readonly IEmployeesRepository _repo;
+        public EmployeesController(IEmployeesRepository repo)
         {
-            _context = context;
+            _repo = repo;
 
         }
 
         [HttpGet]
         public async Task<IActionResult> GetEmployees()
         {
-            var users = await _context.Employees.ToListAsync();
+            var employees = await _repo.GetEmployees();
 
-            return Ok(users);
+            return Ok(employees);
         }
         
     }

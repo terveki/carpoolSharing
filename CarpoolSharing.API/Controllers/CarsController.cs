@@ -10,17 +10,17 @@ namespace CarpoolSharing.API.Controllers
     public class CarsController : ControllerBase
     {
         
-        private readonly DataContext _context;
-        public CarsController(DataContext context)
+        private readonly ICarsRepository _repo;
+        public CarsController(ICarsRepository repo)
         {
-            _context = context;
+            _repo = repo;
 
         }
 
         [HttpGet]
         public async Task<IActionResult> GetCars()
         {
-            var cars = await _context.Cars.ToListAsync();
+            var cars = await _repo.GetCars();
 
             return Ok(cars);
         }
