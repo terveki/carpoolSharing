@@ -1,0 +1,10 @@
+<div class="card mb-4 mr-4">
+    <div class="card-header">
+      RideNumber: {{ride.rideId}}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{ride.startLocation}} - {{ride.endLocation}}</h5>
+      <p class="card-text">Car: {{ride.carPlates}}</p>
+      <a [routerLink]="['/rides/', ride.rideId]" routerLinkActive="router-link-active"  class="btn btn-primary">Details</a>
+    </div>
+  </div>

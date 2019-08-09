@@ -9,9 +9,17 @@ import { NavComponent } from './nav/nav.component';
 import { AlertifyService } from './_services/alertify.service';
 import { CarsComponent } from './cars/cars.component';
 import { EmployeesComponent } from './employees/employees.component';
-import { RidesComponent } from './rides/rides.component';
+import { RidesListComponent } from './rides/rides-list/rides-list.component';
+import { RidesCardComponent } from './rides/rides-card/rides-card.component';
+
 import { HomeComponent } from './home/home.component';
 import { appRoutes } from './routes';
+import { CarService } from './_services/car.service';
+import { RideService } from './_services/ride.service';
+import { EmployeeService } from './_services/employee.service';
+import { RidesDetailComponent } from './rides/rides-detail/rides-detail.component';
+import { RideListResolver } from './_resolvers/ride-list.resolver';
+import { RideDetailResolver } from './_resolvers/ride-detail.resolver';
 
 @NgModule({
    declarations: [
@@ -20,8 +28,10 @@ import { appRoutes } from './routes';
       NavComponent,
       CarsComponent,
       EmployeesComponent,
-      RidesComponent,
-      HomeComponent
+      RidesListComponent,
+      HomeComponent,
+      RidesCardComponent,
+      RidesDetailComponent
    ],
    imports: [
       BrowserModule,
@@ -29,7 +39,12 @@ import { appRoutes } from './routes';
       RouterModule.forRoot(appRoutes)
    ],
    providers: [
-      AlertifyService
+      AlertifyService,
+      CarService,
+      RideService,
+      EmployeeService,
+      RideListResolver,
+      RideDetailResolver
    ],
    bootstrap: [
       AppComponent

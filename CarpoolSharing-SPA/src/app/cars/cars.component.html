@@ -1,4 +1,16 @@
-<p *ngFor="let car of cars">
-    {{car.carType}}, {{car.plates}}
-  
-  </p>
+<div class="container mt-5">
+    <div class="row">
+      <div *ngFor="let car of cars" style="width: 50%; overflow: hidden;">
+          <div class="card mb-4 mr-4">
+              <div class="card-header">
+                Car: {{car.name}}
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">{{car.plates}}</h5>
+                <p class="card-text">{{car.carType}}, {{car.noOfSeats}} seats, {{car.color}}</p>
+              </div>
+            </div>
+          
+      </div>  
+    </div>
+  </div>

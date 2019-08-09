@@ -1,0 +1,7 @@
+<div class="container mt-5">
+    <div class="row">
+      <div *ngFor="let ride of rides" style="width: 50%; overflow: hidden;">
+        <app-rides-card [ride]="ride"></app-rides-card>
+      </div>  
+    </div>
+  </div>

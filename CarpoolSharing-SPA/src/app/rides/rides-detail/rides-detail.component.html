@@ -1,0 +1,47 @@
+<div class="container mt-4">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+              <div>
+                  <strong>RideId:</strong>
+                  <p>{{ride.rideId}}</p>
+              </div>
+            <div>
+                <strong>Employees:</strong>
+                <p *ngFor="let employee of ride.employee">{{employee.name}}</p>
+            </div>
+            <div>
+              <strong>Start Location:</strong>
+              <p>{{ride.startLocation}}</p>
+            </div>
+            <div>
+              <strong>End Location:</strong>
+              <p>{{ride.endLocation}}</p>
+            </div>
+            <div>
+                <strong>Start Date:</strong>
+                <p>{{ride.startDate}}</p>
+              </div>
+              <div>
+                <strong>End Date:</strong>
+                <p>{{ride.endDate}}</p>
+              </div>
+            <div>
+                <strong>Car:</strong>
+                <div class="card">
+                  <div class="card-body">
+                    <p>{{ride.car.name}}, {{ride.car.plates}}</p>
+                    <p>{{ride.car.carType}}, {{ride.car.color}}</p>
+                    <p>No of seats: {{ride.car.noOfSeats}}</p>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div class="card-footer">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
