@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using CarpoolSharing.API.Data;
+using CarpoolSharing.API.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,5 +25,12 @@ namespace CarpoolSharing.API.Controllers
             return Ok(employees);
         }
         
+        [HttpPost]
+        [Route("getAvailableEmployees")]
+        public async Task<IActionResult> GetAvailableEmployees(RideForSearchDto rideForSerachDto)
+        {
+            var cars = await _repo.GetAvailableEmployees(rideForSerachDto);
+            return Ok(cars);
+        }
     }
 }

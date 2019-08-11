@@ -20,4 +20,8 @@ export class CarService {
   getCar(id): Observable<Car> {
     return this.http.get<Car>(this.baseUrl + 'cars/' + id);
   }
+
+  getAvailableCars(timesDates): Observable<Car[]> {
+    return this.http.post<Car[]>(this.baseUrl + 'cars/getAvailableCars/', timesDates);
+  }
 }

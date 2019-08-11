@@ -12,6 +12,7 @@ namespace CarpoolSharing.API.Data
         public DbSet<Car> Cars { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Ride> Rides { get; set; }
+        public DbSet<EmployeeRide> EmployeeRide {get; set;}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

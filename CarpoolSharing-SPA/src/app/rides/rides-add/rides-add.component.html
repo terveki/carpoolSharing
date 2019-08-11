@@ -1,0 +1,50 @@
+<div class="container" style="margin-top: 10px">
+  <form #chooseTimeForm="ngForm" id="chooseTime" (ngSubmit)="chooseTime()">
+
+      <div class="card">
+        <div style="margin-top: 10px; margin-left: 10px" >
+          <h4>New Ride</h4>
+          <p>First you need to enter stard and end date</p>
+          <div class="col-xs-12 col-12 col-md-4 form-group">
+              <input type="text"
+                    placeholder="Pick time range"
+                    class="form-control"
+                    [(ngModel)]="daterangepickerModel"
+                    name="dateRange"
+                    #daterangepicker="bsDaterangepicker"
+                    class="form-control"
+                    bsDaterangepicker
+                    [bsConfig]="{ adaptivePosition: true, 
+                                  rangeInputFormat: 'YYYY-MM-DD h:mm:ss',
+                                  containerClass: 'theme-blue'  }"
+                    [minDate]="minDate">
+          </div>
+        </div>
+        <button class="btn btn-success btn-block" type="submit">Go!</button>
+      </div>
+  
+  </form> 
+  <form #AddNewForm="ngForm" id="addNewForm" (ngSubmit)="addNewRide()">
+
+      <div class="card">
+        <div style="margin-top: 10px; margin-left: 10px">
+          <h4>Location:</h4>
+          <input class="form-control mr-sm-2" type="text" name="startLocation"
+          placeholder="StartLocation" required [(ngModel)]="ride.startLocation">
+          <input class="form-control mr-sm-2" type="text" name="endLocation"
+          placeholder="EndLocation" required [(ngModel)]="ride.endLocation">
+        </div>
+        <div class="input-group mb-3">
+            <select class="custom-select" id="inputGroupSelect02">
+              <option selected>Choose car...</option>
+              <option *ngFor="let car of cars" value="{{car.carId}}">{{car.name}}, seats: {{car.noOfSeats}}, {{car.plates}}</option>
+            </select>
+            <div class="input-group-append">
+              <label class="input-group-text" for="inputGroupSelect02">Select</label>
+            </div>
+         </div>
+        <button class="btn btn-success btn-block" type="submit">Go!</button>
+      </div>
+  
+  </form> 
+</div>

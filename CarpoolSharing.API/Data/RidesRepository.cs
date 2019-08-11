@@ -13,9 +13,12 @@ namespace CarpoolSharing.API.Data
         {
             _context = context;
         }
-        public void Add<T>(T entity) where T : class
+        public async Task<Ride> Add(Ride ride)
         {
-            _context.Add(entity);
+            await _context.Rides.AddAsync(ride);
+            await _context.SaveChangesAsync();
+
+            return ride;
         }
 
         public async Task<Ride> GetRide(int id)

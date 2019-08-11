@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarpoolSharing.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190807144000_InitialModels")]
-    partial class InitialModels
+    [Migration("20190810092245_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

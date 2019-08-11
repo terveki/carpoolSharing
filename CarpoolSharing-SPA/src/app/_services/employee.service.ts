@@ -19,4 +19,8 @@ export class EmployeeService {
   getEmployee(id): Observable<Employee> {
     return this.http.get<Employee>(this.baseUrl + 'employees/' + id);
   }
+
+  getAvailableEmployees(timesDates): Observable<Employee[]> {
+    return this.http.post<Employee[]>(this.baseUrl + 'employees/GetAvailableEmployees/', timesDates);
+  }
 }

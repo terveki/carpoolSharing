@@ -3,7 +3,6 @@ import { RideService } from 'src/app/_services/ride.service';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { ActivatedRoute } from '@angular/router';
 import { Ride } from 'src/app/_models/ride';
-import { Employee } from 'src/app/_models/employee';
 
 @Component({
   selector: 'app-rides-detail',

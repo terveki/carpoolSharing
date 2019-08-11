@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 import { AppComponent } from './app.component';
 import { ValueComponent } from './value/value.component';
@@ -20,6 +23,8 @@ import { EmployeeService } from './_services/employee.service';
 import { RidesDetailComponent } from './rides/rides-detail/rides-detail.component';
 import { RideListResolver } from './_resolvers/ride-list.resolver';
 import { RideDetailResolver } from './_resolvers/ride-detail.resolver';
+import { RidesAddComponent } from './rides/rides-add/rides-add.component';
+import { RidesEditComponent } from './rides/rides-edit/rides-edit.component';
 
 @NgModule({
    declarations: [
@@ -31,12 +36,17 @@ import { RideDetailResolver } from './_resolvers/ride-detail.resolver';
       RidesListComponent,
       HomeComponent,
       RidesCardComponent,
-      RidesDetailComponent
+      RidesDetailComponent,
+      RidesEditComponent,
+      RidesAddComponent
    ],
    imports: [
       BrowserModule,
       HttpClientModule,
-      RouterModule.forRoot(appRoutes)
+      RouterModule.forRoot(appRoutes),
+      FormsModule,
+      BrowserAnimationsModule,
+      BsDatepickerModule.forRoot()
    ],
    providers: [
       AlertifyService,

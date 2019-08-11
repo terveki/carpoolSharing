@@ -20,6 +20,4 @@ export class RideService {
   getRide(id): Observable<Ride> {
     return this.http.get<Ride>(this.baseUrl + 'rides/' + id);
   }
-
-
 }

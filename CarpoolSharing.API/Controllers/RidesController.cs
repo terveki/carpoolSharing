@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 using AutoMapper;
 using CarpoolSharing.API.Data;
 using CarpoolSharing.API.Dtos;
+using CarpoolSharing.API.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace CarpoolSharing.API.Controllers
 {
@@ -32,7 +32,7 @@ namespace CarpoolSharing.API.Controllers
 
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetRide")]
         public async Task<IActionResult> GetRide(int id)
         {
             var ride = await _repo.GetRide(id);
@@ -42,6 +42,14 @@ namespace CarpoolSharing.API.Controllers
             return Ok(rideToReturn);
 
         }
-        
+
+        [HttpPost("addNewRide")]
+        public async Task<IActionResult> AddNewRide(Ride ride)
+        {
+            var rideCreated = await _repo.Add(ride);
+            var rideToReturn = _mapper.Map<RideForDetailedDto>(rideCreated);
+
+            return CreatedAtRoute("GetRide", new { controller = "Rides", id = rideCreated.RideId }, rideToReturn);
+        }
     }
 }

@@ -6,9 +6,9 @@ namespace CarpoolSharing.API.Data
 {
     public interface IRidesRepository
     {
-        void Add<T>(T entity) where T: class;
-         Task<bool> SaveAll();
-         Task<IEnumerable<Ride>> GetRides();
-         Task<Ride> GetRide(int id);
+        Task<Ride> Add(Ride ride);
+        Task<bool> SaveAll();
+        Task<IEnumerable<Ride>> GetRides();
+        Task<Ride> GetRide(int id);
     }
 }
