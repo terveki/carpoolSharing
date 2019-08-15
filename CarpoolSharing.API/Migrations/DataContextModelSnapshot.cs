@@ -102,12 +102,12 @@ namespace CarpoolSharing.API.Migrations
                     b.HasOne("CarpoolSharing.API.Models.Employee", "Employee")
                         .WithMany("EmployeeRides")
                         .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("CarpoolSharing.API.Models.Ride", "Ride")
                         .WithMany("EmployeeRides")
                         .HasForeignKey("RideId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("CarpoolSharing.API.Models.Ride", b =>
@@ -115,7 +115,7 @@ namespace CarpoolSharing.API.Migrations
                     b.HasOne("CarpoolSharing.API.Models.Car", "Car")
                         .WithMany("Rides")
                         .HasForeignKey("CarId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

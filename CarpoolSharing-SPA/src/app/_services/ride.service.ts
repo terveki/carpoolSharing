@@ -17,12 +17,16 @@ export class RideService {
     return this.http.get<Ride[]>(this.baseUrl + 'rides');
   }
 
-  getRide(id): Observable<Ride> {
+  getRide(id: number): Observable<Ride> {
     return this.http.get<Ride>(this.baseUrl + 'rides/' + id);
   }
 
   addNewRide(ride: Ride) {
     console.log('sending ride: ' + ride);
     return this.http.post(this.baseUrl + 'rides/addNewRide', ride);
+  }
+
+  deleteRide(rideId: number) {
+    return this.http.delete(this.baseUrl + 'rides/' + rideId);
   }
 }

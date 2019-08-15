@@ -48,7 +48,7 @@
            <h4>Choose employees for the ride:</h4>
            <div *ngFor="let employee of employees">
              <span title="is driver: {{employee.isDriver}}"> 
-                <input type="checkbox" [(ngModel)]="employee.checked" name="employeeCheckbox"
+                <input type="checkbox" name="employeeCheckbox"
                     data-md-icheck (change)="onEmployeeChange($event, employee)" style="margin-right: 2px"/>
                 <label>{{employee.name}}</label> 
               </span>

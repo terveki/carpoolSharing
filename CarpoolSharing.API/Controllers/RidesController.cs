@@ -51,5 +51,17 @@ namespace CarpoolSharing.API.Controllers
 
             return CreatedAtRoute("GetRide", new { controller = "Rides", id = rideCreated.RideId }, rideToReturn);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteRide(int id)
+        {
+            var rideFromRepo = await _repo.GetRide(id);
+            _repo.Delete(rideFromRepo);
+
+            if (await _repo.SaveAll())
+                return Ok();
+
+            return BadRequest("Failed to delete the ride");
+        }
     }
 }

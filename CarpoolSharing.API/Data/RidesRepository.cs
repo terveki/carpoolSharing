@@ -21,6 +21,11 @@ namespace CarpoolSharing.API.Data
             return ride;
         }
 
+        public void Delete<T>(T entity) where T : class
+        {
+            _context.Remove(entity);
+        }
+
         public async Task<Ride> GetRide(int id)
         {
             var ride = await _context.Rides.Include(c => c.Car)

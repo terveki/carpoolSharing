@@ -59,6 +59,10 @@ export class RidesAddComponent implements OnInit {
 
     this.employeeService.getAvailableEmployees(this.datesToBeSend).subscribe((employees: Employee[]) => {
       this.employees = employees;
+      if (this.employees.length === 0) {
+        this.alertify.error('No available employees for that date');
+        return;
+      }
     }, error => {
       this.alertify.error(error);
     });

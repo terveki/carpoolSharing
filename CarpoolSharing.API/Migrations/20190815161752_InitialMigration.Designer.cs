@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarpoolSharing.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190810092245_InitialMigration")]
+    [Migration("20190815161752_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -104,12 +104,12 @@ namespace CarpoolSharing.API.Migrations
                     b.HasOne("CarpoolSharing.API.Models.Employee", "Employee")
                         .WithMany("EmployeeRides")
                         .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("CarpoolSharing.API.Models.Ride", "Ride")
                         .WithMany("EmployeeRides")
                         .HasForeignKey("RideId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("CarpoolSharing.API.Models.Ride", b =>
@@ -117,7 +117,7 @@ namespace CarpoolSharing.API.Migrations
                     b.HasOne("CarpoolSharing.API.Models.Car", "Car")
                         .WithMany("Rides")
                         .HasForeignKey("CarId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
