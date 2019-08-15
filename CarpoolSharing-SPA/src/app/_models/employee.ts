@@ -1,5 +1,5 @@
 export interface Employee {
-    name: string;
+    name?: string;
     employeeId ?: number;
     isDriver ?: boolean;
 }

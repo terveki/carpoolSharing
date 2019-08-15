@@ -9,7 +9,7 @@ import { AlertifyService } from '../_services/alertify.service';
   styleUrls: ['./employees.component.css']
 })
 export class EmployeesComponent implements OnInit {
-  employees: Employee[]
+  employees: Employee[];
 
   constructor(private employeeService: EmployeeService, private alertify: AlertifyService) { }
 
@@ -20,7 +20,7 @@ export class EmployeesComponent implements OnInit {
   loadEmployees() {
     this.employeeService.getEmployees().subscribe((employees: Employee[]) => {
       this.employees = employees;
-    }, error =>{
+    }, error => {
       this.alertify.error(error);
     });
   }

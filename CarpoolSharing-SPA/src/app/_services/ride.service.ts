@@ -20,4 +20,9 @@ export class RideService {
   getRide(id): Observable<Ride> {
     return this.http.get<Ride>(this.baseUrl + 'rides/' + id);
   }
+
+  addNewRide(ride: Ride) {
+    console.log('sending ride: ' + ride);
+    return this.http.post(this.baseUrl + 'rides/addNewRide', ride);
+  }
 }

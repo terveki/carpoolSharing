@@ -12,7 +12,7 @@ import { Ride } from 'src/app/_models/ride';
 export class RidesDetailComponent implements OnInit {
   ride: Ride;
 
-  constructor(private rideService: RideService, private alertify: AlertifyService, private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
