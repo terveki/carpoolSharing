@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CarpoolSharing.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class CarsController : ControllerBase
     {
@@ -27,11 +27,21 @@ namespace CarpoolSharing.API.Controllers
         }
 
         [HttpPost]
-        [Route("getAvailableCars")]
+        [ActionName("getAvailableCars")]
         public async Task<IActionResult> GetAvailableCars(RideForSearchDto rideForSerachDto)
         {
             var cars = await _repo.GetAvailableCars(rideForSerachDto);
             return Ok(cars);
+        }
+
+        [HttpGet("{id}")]
+        [ActionName("GetCarStatistics")]
+        public async Task<IActionResult> GetCarStatistics(int id)
+        {
+            var ridesPerYear = await _repo.GetCarStatistics(id);
+
+            return Ok(ridesPerYear);
+
         }
     }
 }

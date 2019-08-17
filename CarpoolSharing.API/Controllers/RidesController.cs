@@ -66,14 +66,5 @@ namespace CarpoolSharing.API.Controllers
             return BadRequest("Failed to delete the ride");
         }
 
-        [HttpGet("{id}")]
-        [ActionName("GetCarStatistics")]
-        public async Task<IActionResult> GetCarStatistics(int id)
-        {
-            var ridesPerYear = await _repo.GetCarStatistics(id);
-
-            return Ok(ridesPerYear);
-
-        }
     }
 }

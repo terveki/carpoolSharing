@@ -11,6 +11,6 @@ namespace CarpoolSharing.API.Data
         Task<IEnumerable<Ride>> GetRides();
         Task<Ride> GetRide(int id);
         void Delete<T>(T entity) where T: class;
-        Task<IEnumerable<UtilizationPerYear>> GetCarStatistics(int id);
+
     }
 }

@@ -15,7 +15,7 @@ export class CarService {
   constructor(private http: HttpClient) { }
 
   getCars(): Observable<Car[]> {
-    return this.http.get<Car[]>(this.baseUrl + 'cars');
+    return this.http.get<Car[]>(this.baseUrl + 'cars/getCars');
   }
 
   getCar(id: number): Observable<Car> {
@@ -27,6 +27,6 @@ export class CarService {
   }
 
   getCarStatistics(carId: number): Observable<Stats[]> {
-    return this.http.get<Stats[]>(this.baseUrl + 'rides/GetCarStatistics/' + carId);
+    return this.http.get<Stats[]>(this.baseUrl + 'cars/GetCarStatistics/' + carId);
   }
 }
