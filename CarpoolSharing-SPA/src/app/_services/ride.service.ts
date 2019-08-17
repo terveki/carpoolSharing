@@ -14,11 +14,11 @@ export class RideService {
   constructor(private http: HttpClient) { }
 
   getRides(): Observable<Ride[]> {
-    return this.http.get<Ride[]>(this.baseUrl + 'rides');
+    return this.http.get<Ride[]>(this.baseUrl + 'rides/getRides');
   }
 
   getRide(id: number): Observable<Ride> {
-    return this.http.get<Ride>(this.baseUrl + 'rides/' + id);
+    return this.http.get<Ride>(this.baseUrl + 'rides/GetRide/' + id);
   }
 
   addNewRide(ride: Ride) {
@@ -27,6 +27,6 @@ export class RideService {
   }
 
   deleteRide(rideId: number) {
-    return this.http.delete(this.baseUrl + 'rides/' + rideId);
+    return this.http.delete(this.baseUrl + 'rides/DeleteRide/' + rideId);
   }
 }

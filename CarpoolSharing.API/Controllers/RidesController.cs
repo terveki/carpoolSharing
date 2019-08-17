@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CarpoolSharing.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class RidesController : ControllerBase
     {
@@ -33,6 +33,7 @@ namespace CarpoolSharing.API.Controllers
         }
 
         [HttpGet("{id}", Name = "GetRide")]
+        [ActionName("GetRide")]
         public async Task<IActionResult> GetRide(int id)
         {
             var ride = await _repo.GetRide(id);
@@ -43,7 +44,8 @@ namespace CarpoolSharing.API.Controllers
 
         }
 
-        [HttpPost("addNewRide")]
+        [HttpPost()]
+        [ActionName("AddNewRide")]
         public async Task<IActionResult> AddNewRide(Ride ride)
         {
             var rideCreated = await _repo.Add(ride);
@@ -62,6 +64,16 @@ namespace CarpoolSharing.API.Controllers
                 return Ok();
 
             return BadRequest("Failed to delete the ride");
+        }
+
+        [HttpGet("{id}")]
+        [ActionName("GetCarStatistics")]
+        public async Task<IActionResult> GetCarStatistics(int id)
+        {
+            var ridesPerYear = await _repo.GetCarStatistics(id);
+
+            return Ok(ridesPerYear);
+
         }
     }
 }

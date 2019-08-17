@@ -14,7 +14,7 @@ export const appRoutes: Routes = [
     { path: 'cars', component: CarsComponent },
     { path: 'employees', component: EmployeesComponent },
     { path: 'rides', component: RidesListComponent, resolve: {rides: RideListResolver} },
-    { path: 'rides/:id', component: RidesDetailComponent, resolve: {ride: RideDetailResolver} },
+    { path: 'rides/GetRide/:id', component: RidesDetailComponent, resolve: {ride: RideDetailResolver} },
     { path: 'rides/:id/edit', component: RidesEditComponent },
     { path: 'add', component: RidesAddComponent },
     { path: '**', redirectTo: 'home', pathMatch: 'full' }
