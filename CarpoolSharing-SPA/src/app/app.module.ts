@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { ValueComponent } from './value/value.component';
 import { NavComponent } from './nav/nav.component';
 import { AlertifyService } from './_services/alertify.service';
-import { CarsComponent } from './cars/cars.component';
+import { CarsComponent } from './cars/cars-list/cars.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { RidesListComponent } from './rides/rides-list/rides-list.component';
 import { RidesCardComponent } from './rides/rides-card/rides-card.component';
@@ -25,6 +25,8 @@ import { RideListResolver } from './_resolvers/ride-list.resolver';
 import { RideDetailResolver } from './_resolvers/ride-detail.resolver';
 import { RidesAddComponent } from './rides/rides-add/rides-add.component';
 import { RidesEditComponent } from './rides/rides-edit/rides-edit.component';
+import { CarsStatisticsComponent } from './cars/cars-statistics/cars-statistics.component';
+import { CarStatsResolver } from './_resolvers/car-stats.resolver';
 
 @NgModule({
    declarations: [
@@ -32,6 +34,7 @@ import { RidesEditComponent } from './rides/rides-edit/rides-edit.component';
       ValueComponent,
       NavComponent,
       CarsComponent,
+      CarsStatisticsComponent,
       EmployeesComponent,
       RidesListComponent,
       HomeComponent,
@@ -54,7 +57,8 @@ import { RidesEditComponent } from './rides/rides-edit/rides-edit.component';
       RideService,
       EmployeeService,
       RideListResolver,
-      RideDetailResolver
+      RideDetailResolver,
+      CarStatsResolver
    ],
    bootstrap: [
       AppComponent

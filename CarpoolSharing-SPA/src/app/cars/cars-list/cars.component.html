@@ -8,8 +8,10 @@
               <div class="card-body">
                 <h5 class="card-title">{{car.plates}}</h5>
                 <p class="card-text">{{car.carType}}, {{car.noOfSeats}} seats, {{car.color}}</p>
+              
+                <a [routerLink]="['/cars/statistics/', car.carId]" routerLinkActive="router-link-active"  class="btn btn-primary">Statistics</a>
               </div>
-            </div>
+          </div>
           
       </div>  
     </div>

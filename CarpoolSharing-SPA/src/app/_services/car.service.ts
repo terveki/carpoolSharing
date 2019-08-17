@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Car } from '../_models/car';
+import { Stats } from '../_models/stats';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +18,15 @@ export class CarService {
     return this.http.get<Car[]>(this.baseUrl + 'cars');
   }
 
-  getCar(id): Observable<Car> {
+  getCar(id: number): Observable<Car> {
     return this.http.get<Car>(this.baseUrl + 'cars/' + id);
   }
 
-  getAvailableCars(timesDates): Observable<Car[]> {
+  getAvailableCars(timesDates: any): Observable<Car[]> {
     return this.http.post<Car[]>(this.baseUrl + 'cars/getAvailableCars/', timesDates);
+  }
+
+  getCarStatistics(carId: number): Observable<Stats[]> {
+    return this.http.get<Stats[]>(this.baseUrl + 'rides/GetCarStatistics/' + carId);
   }
 }

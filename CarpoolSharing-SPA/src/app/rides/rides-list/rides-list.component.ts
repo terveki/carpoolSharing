@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Ride } from 'src/app/_models/ride';
-import { RideService } from 'src/app/_services/ride.service';
-import { AlertifyService } from 'src/app/_services/alertify.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -12,8 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class RidesListComponent implements OnInit {
   rides: Ride[];
 
-  constructor(private rideService: RideService, private alertify: AlertifyService,
-     private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
