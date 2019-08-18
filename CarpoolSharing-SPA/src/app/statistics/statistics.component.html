@@ -1,0 +1,32 @@
+<div class="card select-page">
+  <div class="card-body selector">
+      <form #selectMonthForm="ngForm" id="selectMonth" (ngSubmit)="selectMonth()">
+          <div class="card">
+            <div class="form-check ml-2 mt-3 month-selector" >
+              <h4>Statistics</h4>
+              <select class="custom-select mr-3 mb-3" id="inputGroupSelect02" 
+                      [(ngModel)]="selectedMonth" name="selectedMonth" (change)="onMonthChange()">
+                <option>January</option>
+                <option>February</option>
+                <option>March</option>
+                <option>April</option>
+                <option>May</option>
+                <option>June</option>
+                <option>July</option>
+                <option>August</option>
+                <option>September</option>
+                <option>October</option>
+                <option>November</option>
+                <option>December</option>
+              </select>
+            </div>
+            <button class="btn btn-success btn-block" type="submit">Go!</button>
+          </div>     
+      </form>
+  </div>
+  <div class=" chart-container">
+    <div class="chart card-body">
+        <canvas #canvas id="canvas">{{chart}}</canvas>
+    </div>
+  </div>
+</div>

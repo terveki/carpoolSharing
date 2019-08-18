@@ -27,6 +27,7 @@ import { RidesAddComponent } from './rides/rides-add/rides-add.component';
 import { RidesEditComponent } from './rides/rides-edit/rides-edit.component';
 import { CarsStatisticsComponent } from './cars/cars-statistics/cars-statistics.component';
 import { CarStatsResolver } from './_resolvers/car-stats.resolver';
+import { StatisticsComponent } from './statistics/statistics.component';
 
 @NgModule({
    declarations: [
@@ -41,7 +42,8 @@ import { CarStatsResolver } from './_resolvers/car-stats.resolver';
       RidesCardComponent,
       RidesDetailComponent,
       RidesEditComponent,
-      RidesAddComponent
+      RidesAddComponent,
+      StatisticsComponent
    ],
    imports: [
       BrowserModule,

@@ -10,6 +10,8 @@ import { RidesEditComponent } from './rides/rides-edit/rides-edit.component';
 import { RidesAddComponent } from './rides/rides-add/rides-add.component';
 import { CarsStatisticsComponent } from './cars/cars-statistics/cars-statistics.component';
 import { CarStatsResolver } from './_resolvers/car-stats.resolver';
+import { StatisticsComponent } from './statistics/statistics.component';
+import { CarStatByMonthResolver } from './_resolvers/car-stats-by-month.resolver';
 
 export const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
@@ -20,5 +22,6 @@ export const appRoutes: Routes = [
     { path: 'rides/GetRide/:id', component: RidesDetailComponent, resolve: {ride: RideDetailResolver} },
     { path: 'rides/:id/edit', component: RidesEditComponent },
     { path: 'add', component: RidesAddComponent },
+    { path: 'stats', component: StatisticsComponent },
     { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];

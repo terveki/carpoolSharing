@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Car } from '../_models/car';
 import { Stats } from '../_models/stats';
+import { StatsByMonth } from '../_models/StatsByMonth';
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +29,9 @@ export class CarService {
 
   getCarStatistics(carId: number): Observable<Stats[]> {
     return this.http.get<Stats[]>(this.baseUrl + 'cars/GetCarStatistics/' + carId);
+  }
+
+  getCarStatisticsByMonth(month: number): Observable<StatsByMonth[]> {
+    return this.http.get<StatsByMonth[]>(this.baseUrl + 'cars/GetCarsStatsByMonth/' + month);
   }
 }

@@ -1,0 +1,17 @@
+.selector {
+    width: 500px;
+    margin-left:auto;
+    margin-right: auto;
+}
+.month-selector {
+    width: 80%
+}
+
+.chart-container {
+    width: 900px;
+    height: 600px;
+    margin-top: 50px;
+    left: 20%;
+    margin-left:auto;
+    margin-right: auto;
+}
