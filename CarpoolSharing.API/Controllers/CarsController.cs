@@ -43,5 +43,15 @@ namespace CarpoolSharing.API.Controllers
             return Ok(ridesPerYear);
 
         }
+
+        [HttpGet("{month}")]
+        [ActionName("GetCarsStatsByMonth")]
+        public async Task<IActionResult> GetCarsStatsByMonth(int month)
+        {
+            var carsUsagePerMonth = await _repo.GetCarsStatsByMonth(month);
+
+            return Ok(carsUsagePerMonth);
+
+        }
     }
 }

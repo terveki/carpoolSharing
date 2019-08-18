@@ -77,5 +77,35 @@ namespace CarpoolSharing.API.Data
             return result;
         }
 
+        public async Task<IEnumerable<UtilizationPerMonth>> GetCarsStatsByMonth(int month)
+        {
+            int days = DateTime.DaysInMonth(2019, month);
+            UtilizationPerMonth[] result = _arrays.InitializeArray<UtilizationPerMonth>(days);
+
+            for (var day = 0; day < days; day ++) {
+                result[day].Day = day + 1;
+            }
+
+            DateTime firstDayOfMonth = new DateTime(2019, month, 1);
+            DateTime lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+
+            var firstDay = new SqliteParameter("@firstDay", firstDayOfMonth);
+            var lastDay = new SqliteParameter("@lastDay", lastDayOfMonth);
+            var rides = await _context.Rides.FromSql("SELECT * FROM 'Rides' WHERE ((Rides.StartDate < @firstDay AND Rides.EndDate >= @firstDay) OR (Rides.StartDate >= @firstDay AND Rides.StartDate <= @lastDay))", firstDay, lastDay).ToListAsync();
+
+            foreach (var ride in rides)
+            {
+                DateTime day = ride.StartDate;
+
+                while (day <= ride.EndDate)
+                {
+                    if (day.Month == month) {
+                        result[day.Day - 1].NoOfCarsInUse ++;
+                    }
+                    day = day.AddDays(1);
+                }
+            }
+            return result;
+        }
     }
 }

@@ -14,5 +14,7 @@ namespace CarpoolSharing.API.Data
 
          Task<IEnumerable<Car>> GetAvailableCars(RideForSearchDto rideForSearchDto);
          Task<IEnumerable<UtilizationPerYear>> GetCarStatistics(int id);
+         Task<IEnumerable<UtilizationPerMonth>> GetCarsStatsByMonth(int month);
+         
     }
 }
