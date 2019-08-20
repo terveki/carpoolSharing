@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -13,11 +14,13 @@ namespace CarpoolSharing.API.Controllers
     public class RidesController : ControllerBase
     {
         private readonly IRidesRepository _repo;
+        private readonly IEmployeeRideRepository _employeeRideRepository;
         private readonly IMapper _mapper;
 
-        public RidesController(IRidesRepository repo, IMapper mapper)
+        public RidesController(IRidesRepository repo, IEmployeeRideRepository employeeRideRepository, IMapper mapper)
         {
             _repo = repo;
+            _employeeRideRepository = employeeRideRepository;
             _mapper = mapper;
         }
 
@@ -66,5 +69,49 @@ namespace CarpoolSharing.API.Controllers
             return BadRequest("Failed to delete the ride");
         }
 
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateRide(int id, RideForUpdateDto rideForUpdateDto)
+        {
+            var rideFromRepo = await _repo.GetRide(id);
+
+            _mapper.Map(rideForUpdateDto, rideFromRepo);
+
+            var oldEmployeeRides = await _employeeRideRepository.GetEmployeeRideByRideId(id);
+
+            // delete all old employeeRides
+            foreach (EmployeeRide emplride in oldEmployeeRides) {
+                _employeeRideRepository.Delete(emplride);
+            }
+
+            // create all new employeeRides and add them to data  base
+            foreach (Employee employee in rideForUpdateDto.Employees) {
+                EmployeeRide newEmployeeRide = new EmployeeRide() {
+                    EmployeeId = employee.EmployeeId,
+                    RideId = id
+                };
+                await _employeeRideRepository.Add(newEmployeeRide);
+            }
+
+            try
+            {
+                await _employeeRideRepository.SaveAll();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Updating ride with {id} failed on save of emplyeeRide with {ex}");
+            }
+
+            try
+            {
+                await _repo.SaveAll();
+            }
+            catch (Exception ex)
+            {
+               throw new Exception($"Updating ride with {id} failed on save with {ex}");
+            }
+
+            return NoContent();
+    
+        }
     }
 }

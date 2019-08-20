@@ -39,6 +39,7 @@ namespace CarpoolSharing.API
             services.AddScoped<IRidesRepository, RidesRepository>();
             services.AddScoped<ICarsRepository, CarsRepository>();
             services.AddScoped<IEmployeesRepository, EmployeesRepository>();
+            services.AddScoped<IEmployeeRideRepository, EmployeeRideRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
