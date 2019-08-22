@@ -27,15 +27,15 @@ namespace CarpoolSharing.API.Data
             var startDate = new SqliteParameter("@startDate", rideForSearchDto.StartDate);
             var endDate = new SqliteParameter("@endDate", rideForSearchDto.EndDate);
 
-            // first get employees without any rides
-            var employees = await _context.Employees.FromSql("SELECT * FROM Employees WHERE NOT EXISTS(SELECT *	FROM EmployeeRide WHERE Employees.EmployeeId = EmployeeRide.EmployeeId)").ToListAsync();
-            // get employees whose rides are not in given time interval
-            var employeesRideUnoccupied = await _context.EmployeeRide.FromSql("SELECT * FROM EmployeeRide WHERE NOT EXISTS( SELECT * FROM Rides WHERE Rides.RideId = EmployeeRide.RideId AND ((Rides.StartDate <= @startDate AND Rides.EndDate >= @startDate) OR (Rides.StartDate >= @startDate AND Rides.StartDate <= @endDate)))", startDate, endDate).ToListAsync();
+            // get all employees
+             var employees = await _context.Employees.FromSql("SELECT * FROM Employees").ToListAsync();
+            // get employees whose rides are in given time interval
+            var employeesRideOccupied = await _context.EmployeeRide.FromSql("SELECT EmployeeRide.EmployeeId, EmployeeRide.RideId FROM EmployeeRide LEFT JOIN Rides ON Rides.RideId = EmployeeRide.RideId WHERE ( Rides.RideId = EmployeeRide.RideId AND ((Rides.StartDate <= @startDate AND Rides.EndDate >= @startDate) OR (Rides.StartDate >= @startDate AND Rides.StartDate <= @endDate)))", startDate, endDate).ToListAsync();
 
-            foreach (EmployeeRide employeeRide in employeesRideUnoccupied)
+            foreach (EmployeeRide employeeRide in employeesRideOccupied)
             {
                 Employee employee = await GetEmployee(employeeRide.EmployeeId);
-                employees.Add(employee);
+                employees.Remove(employee);
             }
 
             return employees;

@@ -47,7 +47,7 @@
          <div class="form-check ml-2 mt-3">
            <h4>Choose employees for the ride:</h4>
            <div *ngFor="let employee of employees">
-             <span title="is driver: {{employee.isDriver}}"> 
+             <span title="is driver: {{employee.isDriver}}; id: {{employee.employeeId}}"> 
                 <input type="checkbox" name="employeeCheckbox"
                     data-md-icheck (change)="onEmployeeChange($event, employee)" style="margin-right: 2px"/>
                 <label>{{employee.name}}</label> 
