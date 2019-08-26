@@ -29,4 +29,8 @@ export class RideService {
   deleteRide(rideId: number) {
     return this.http.delete(this.baseUrl + 'rides/DeleteRide/' + rideId);
   }
+
+  updateRide(ride: Ride) {
+    return this.http.put(this.baseUrl + 'rides/UpdateRide/' + ride.rideId, ride);
+  }
 }

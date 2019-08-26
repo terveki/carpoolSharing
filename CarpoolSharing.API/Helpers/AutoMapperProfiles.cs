@@ -14,7 +14,7 @@ namespace CarpoolSharing.API.Helpers
                     opt.MapFrom(src => src.EmployeeRides.Select(p => p.Employee));
                 });
             CreateMap<Ride, RideForDetailedDto>()
-                .ForMember(dest => dest.Employee, opt => {
+                .ForMember(dest => dest.Employees, opt => {
                     opt.MapFrom(src => src.EmployeeRides.Select(p => p.Employee));
                 });
             CreateMap<Employee, EmployeeForListDto>();

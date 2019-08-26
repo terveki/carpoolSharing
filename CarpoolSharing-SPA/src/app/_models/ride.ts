@@ -6,7 +6,7 @@ export interface Ride {
     startLocation?: string;
     endLocation?: string;
     employeeRides?: Employee[];
-    employee?: Employee[];
+    employees?: Employee[];
     carPlates?: string;
     car?: Car;
     startDate?: string;

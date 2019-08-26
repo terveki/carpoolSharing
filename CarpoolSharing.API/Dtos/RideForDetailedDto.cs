@@ -11,7 +11,7 @@ namespace CarpoolSharing.API.Dtos
         public string EndLocation { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public ICollection<EmployeeForDetailedDto> Employee { get; set; }
+        public ICollection<EmployeeForDetailedDto> Employees { get; set; }
         public CarForDetailedDto Car { get; set; }
     }
 }

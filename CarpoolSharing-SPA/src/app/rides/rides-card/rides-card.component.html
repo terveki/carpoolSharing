@@ -5,7 +5,10 @@
     <div class="card-body">
       <h5 class="card-title">{{ride.startLocation}} - {{ride.endLocation}}</h5>
       <p class="card-text">Car: {{ride.carPlates}}</p>
-      <a [routerLink]="['/rides/GetRide/', ride.rideId]" routerLinkActive="router-link-active"  class="btn btn-primary">Details</a>
-      <a (click)="deleteRide(ride.rideId)" class="btn btn-primary ml-3" style="color: white">Delete</a>
+      <div class="btn-group">
+        <a [routerLink]="['/rides/GetRide/', ride.rideId]" routerLinkActive="router-link-active"  class="btn btn-primary">Details</a>
+        <a (click)="deleteRide(ride.rideId)" class="btn btn-primary ml-1" style="color: white">Delete</a>
+        <a [routerLink]="['/rides/edit/', ride.rideId]" routerLinkActive="router-link-active"  class="btn btn-primary ml-1">Edit</a>
+      </div>
     </div>
   </div>
