@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { AlertifyService } from '../_services/alertify.service';
 import { CarService } from '../_services/car.service';
 import { StatsByMonth } from '../_models/StatsByMonth';
@@ -15,14 +15,15 @@ export class StatisticsComponent implements OnInit {
   stats: StatsByMonth[];
   days = [];
   carsInUse = [];
-  chart;
-  ctx;
+  public chart: Chart;
+  ctx: any;
+  @ViewChild('ccontainer') private ccontainer: ElementRef;
 
   @ViewChild('canvasEl') canvasEl: ElementRef;
   /** Canvas 2d context */
   private context: CanvasRenderingContext2D;
 
-  constructor(private alertify: AlertifyService, private carService: CarService) { }
+  constructor(private alertify: AlertifyService, private carService: CarService, private renderer: Renderer2) { }
 
   ngOnInit() {
     this.monthNumber = 0;
@@ -91,8 +92,12 @@ export class StatisticsComponent implements OnInit {
       this.alertify.error('Choose month');
       return;
     }
-
-    this.carService.getCarStatisticsByMonth(this.monthNumber).subscribe((response: StatsByMonth[]) => {
+    if (this.chart) {
+      this.chart.destroy();
+      this.days = [];
+      this.carsInUse = [];
+    }
+     this.carService.getCarStatisticsByMonth(this.monthNumber).subscribe((response: StatsByMonth[]) => {
       this.stats = response;
       this.stats.forEach(y => {
         this.days.push(y.day);
@@ -102,11 +107,16 @@ export class StatisticsComponent implements OnInit {
       this.alertify.error('Error while getting data :(');
       return;
     });
+
   }
 
   selectMonth() {
+    document.getElementById('canvas').remove();
+
+    const canvas = this.renderer.createElement('canvas');
+    this.renderer.setProperty(canvas, 'id', 'canvas');
+    this.renderer.appendChild(this.ccontainer.nativeElement, canvas);
     this.showGraph();
-    //TODO dinamicaly clear graph before rendering new one
   }
 
   showGraph() {
