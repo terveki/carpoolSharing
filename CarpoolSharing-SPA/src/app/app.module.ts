@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 import { AppComponent } from './app.component';
-import { ValueComponent } from './value/value.component';
 import { NavComponent } from './nav/nav.component';
 import { AlertifyService } from './_services/alertify.service';
 import { CarsComponent } from './cars/cars-list/cars.component';
@@ -32,7 +31,6 @@ import { StatisticsComponent } from './statistics/statistics.component';
 @NgModule({
    declarations: [
       AppComponent,
-      ValueComponent,
       NavComponent,
       CarsComponent,
       CarsStatisticsComponent,
