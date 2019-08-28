@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener, Output, EventEmitter } from '@angular/core';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Ride } from 'src/app/_models/ride';
@@ -8,6 +8,7 @@ import { DatesToBeSend } from 'src/app/_models/DatesToBeSend';
 import { Employee } from 'src/app/_models/employee';
 import { EmployeeService } from 'src/app/_services/employee.service';
 import { RideService } from 'src/app/_services/ride.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-rides-edit',
@@ -20,6 +21,13 @@ export class RidesEditComponent implements OnInit {
   datesToBeSend: DatesToBeSend = {};
   employees: Employee[];
   driverExist = false;
+  @ViewChild('editForm') editForm: NgForm;
+  @HostListener('window:beforeunload', ['$event'])
+  unloadNotification($event: any) {
+    if (this.editForm.dirty) {
+      $event.returnValue = true;
+    }
+  }
 
   constructor(private route: ActivatedRoute, private alertify: AlertifyService,
               private carService: CarService, private employeeService: EmployeeService,
