@@ -112,6 +112,7 @@ export class RidesAddComponent implements OnInit {
             return false;
           }
     if (this.checkNumberOfSeats() === false) {
+      this.alertify.error('Too many people for that car');
       return false;
     }
     return true;
@@ -119,7 +120,6 @@ export class RidesAddComponent implements OnInit {
 
   addNewRide() {
     if (this.checkAllIn() === false) {
-      console.log('Something is wrong with your input');
     } else {
       this.rideService.addNewRide(this.ride).subscribe(() => {
         this.alertify.success('New ride added');

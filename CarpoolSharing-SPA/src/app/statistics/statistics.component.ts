@@ -3,6 +3,7 @@ import { AlertifyService } from '../_services/alertify.service';
 import { CarService } from '../_services/car.service';
 import { StatsByMonth } from '../_models/StatsByMonth';
 import { Chart } from 'chart.js';
+import { EmployeeService } from '../_services/employee.service';
 
 @Component({
   selector: 'app-statistics',
@@ -12,9 +13,11 @@ import { Chart } from 'chart.js';
 export class StatisticsComponent implements OnInit {
   selectedMonth: string;
   monthNumber: number;
-  stats: StatsByMonth[];
+  carStats: StatsByMonth[];
+  employeeStats: StatsByMonth[];
   days = [];
   carsInUse = [];
+  occupiedEmployees = [];
   public chart: Chart;
   ctx: any;
   @ViewChild('ccontainer') private ccontainer: ElementRef;
@@ -23,7 +26,8 @@ export class StatisticsComponent implements OnInit {
   /** Canvas 2d context */
   private context: CanvasRenderingContext2D;
 
-  constructor(private alertify: AlertifyService, private carService: CarService, private renderer: Renderer2) { }
+  constructor(private alertify: AlertifyService, private carService: CarService, private renderer: Renderer2,
+              private employeeService: EmployeeService) { }
 
   ngOnInit() {
     this.monthNumber = 0;
@@ -96,15 +100,26 @@ export class StatisticsComponent implements OnInit {
       this.chart.destroy();
       this.days = [];
       this.carsInUse = [];
+      this.occupiedEmployees = [];
     }
      this.carService.getCarStatisticsByMonth(this.monthNumber).subscribe((response: StatsByMonth[]) => {
-      this.stats = response;
-      this.stats.forEach(y => {
+      this.carStats = response;
+      this.carStats.forEach(y => {
         this.days.push(y.day);
-        this.carsInUse.push(y.noOfCarsInUse);
+        this.carsInUse.push(y.noOfItemsInUse);
       });
     }, error => {
       this.alertify.error('Error while getting data :(');
+      return;
+    });
+
+    this.employeeService.getCarStatisticsByMonth(this.monthNumber).subscribe((response: StatsByMonth[]) => {
+      this.employeeStats = response;
+      this.employeeStats.forEach(y => {
+        this.occupiedEmployees.push(y.noOfItemsInUse);
+      });
+    }, error => {
+      this.alertify.error('Error while getting employee stats data :(');
       return;
     });
 
@@ -123,14 +138,20 @@ export class StatisticsComponent implements OnInit {
     const data = {
       labels: this.days,
       datasets: [{
-        data: this.carsInUse,
-        borderColor: '#3cba9f',
-        fill: 'false'
-      }]
+                  label: 'no of cars',
+                  data: this.carsInUse,
+                  borderColor: '#3cba9f',
+                  fill: 'false'
+                  },
+                  {
+                    label: 'no of employees',
+                    data: this.occupiedEmployees,
+                    borderColor: '#333111',
+                    fill: 'false'
+                  }]
     };
 
     const options = {
-      legend: {display: false},
       scales: {xAxes: [{
                         display: true,
                         scaleLabel: {
@@ -142,7 +163,7 @@ export class StatisticsComponent implements OnInit {
                         display: true,
                         scaleLabel: {
                           display: true,
-                          labelString: 'cars in use'
+                          labelString: 'no of cars/employees on the road'
                         },
                         ticks: {
                           beginAtZero: true,

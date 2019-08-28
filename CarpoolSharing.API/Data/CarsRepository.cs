@@ -12,6 +12,7 @@ namespace CarpoolSharing.API.Data
     public class CarsRepository : ICarsRepository
     {
         private readonly ArrayHelper _arrays = new ArrayHelper();
+
         private readonly DataContext _context;
 
         public CarsRepository(DataContext context)
@@ -100,7 +101,7 @@ namespace CarpoolSharing.API.Data
                 while (day <= ride.EndDate)
                 {
                     if (day.Month == month) {
-                        result[day.Day - 1].NoOfCarsInUse ++;
+                        result[day.Day - 1].NoOfItemsInUse ++;
                     }
                     day = day.AddDays(1);
                 }

@@ -9,6 +9,7 @@ namespace CarpoolSharing.API.Data
         Task<EmployeeRide> Add(EmployeeRide employeeRide);
         Task<IEnumerable<EmployeeRide>> GetEmployeeRideByIds(int employee, int ride);
         Task<IEnumerable<EmployeeRide>> GetEmployeeRideByRideId(int ride);
+         Task<IEnumerable<UtilizationPerMonth>> GetEmployeeStatsByMonth(int month);
         Task<bool> SaveAll();
         void Delete<T>(T entity) where T: class;
     }

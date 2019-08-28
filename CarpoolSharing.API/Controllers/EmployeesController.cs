@@ -5,15 +5,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CarpoolSharing.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class EmployeesController : ControllerBase
     {
         private readonly IEmployeesRepository _repo;
-        public EmployeesController(IEmployeesRepository repo)
+        private readonly IEmployeeRideRepository _emplRideRepo;
+
+        public EmployeesController(IEmployeesRepository repo, IEmployeeRideRepository emplRideRepo)
         {
             _repo = repo;
-
+            _emplRideRepo = emplRideRepo;
         }
 
         [HttpGet]
@@ -25,11 +27,21 @@ namespace CarpoolSharing.API.Controllers
         }
         
         [HttpPost]
-        [Route("getAvailableEmployees")]
+        [ActionName("GetAvailableEmployees")]
         public async Task<IActionResult> GetAvailableEmployees(RideForSearchDto rideForSerachDto)
         {
             var employees = await _repo.GetAvailableEmployees(rideForSerachDto);
             return Ok(employees);
+        }
+
+        [HttpGet("{month}")]
+        [ActionName("GetEmplStatsByMonth")]
+        public async Task<IActionResult> GetEmplStatsByMonth(int month)
+        {
+            var emplPerMonth = await _emplRideRepo.GetEmployeeStatsByMonth(month);
+
+            return Ok(emplPerMonth);
+
         }
     }
 }
