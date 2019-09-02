@@ -1,0 +1,73 @@
+######################################################################################################
+_
+_________                                   .__      _________.__                 .__                
+\_   ___ \_____ _____________   ____   ____ |  |    /   _____/|  |__ _____ _______|__| ____    ____  
+/    \  \/\__  \\_  __ \____ \ /  _ \ /  _ \|  |    \_____  \ |  |  \\__  \\_  __ \  |/    \  / ___\ 
+\     \____/ __ \|  | \/  |_> >  <_> |  <_> )  |__  /        \|   Y  \/ __ \|  | \/  |   |  \/ /_/  >
+ \______  (____  /__|  |   __/ \____/ \____/|____/ /_______  /|___|  (____  /__|  |__|___|  /\___  / 
+        \/     \/      |__|                                \/      \/     \/              \//_____/ 
+
+
+######################################################################################################
+
+1. Introduction
+    Carpool sharing is simple web app for orginizing people for travel purposes. Once time is picked and car is choosen
+    not much is needed for full control over travel plan.
+    Application doesn't require instalation. When published to a server, it is ready to use.
+
+2. Home page
+    Home page gives following options: Cars, Employees, Rides, Statistics. Each selection leads to related pages.
+    Pages are more detailed described in following chapters. Same choice is present on navigation bar at the top
+    of each page.
+
+3. Cars page
+    Cars page gives list of all cars. For each car, following information is displayed: car name,plates, type, number 
+    of seats and color.
+
+3.1. Cars Statistics
+    Each car in the list gives statistics button. By clicking on it, usage of selected car are shown for current
+    year, giving number of days that car have been used each month.
+
+4. Employees page
+    Employees page gives list of all employees. Next to the employee name is drivers licence information, telling if
+    employee is driver or not.
+
+5. Rides page
+    Rides page gives list of all booked rides. Each ride is presented with card, giving following information:
+    ride number, start and end location, car plates that are used for that ride and following options to select:
+    details, delete and edit.
+
+5.1. Ride details
+    Ride details option gives page dedicated to selected ride. It gives information: ride id, list of emplyees that
+    are booked for that ride, start and end location, start and end date and selected car with car information: 
+    car name, plates, type, color and number of seats.
+
+5.2 Ride delete
+    Ride delete option is given to permanently delete ride.
+
+5.3. Ride edit
+    Ride edit option is given to edit information about selected ride. Ride dates are fixed and cannot be changed.
+    If needed, new ride with new dates can be created. Start and end location can be changed. Edit page gives list
+    of all available cars for ride period and available employees. Once clicked on Go! button ride is edited and 
+    changes cannot be retrieved.
+
+6. New ride
+    New ride page gives option of booking new ride that will be saved to data base. First, start and end date needs
+    to be choosen by selecting dates on drop down calendar menu. By clicking Go! other input fields are shown.
+    Selected dates can be changed during new ride input, but Go! button needs to be pressed each time.
+    On first Go! button click selection of cars and emplyees are shown. Only cars and emplyees available (not on the
+    road) are shown and can be selected. When hovered over emplyee name, information about emplyees drivers licence
+    is shown.
+    Restrictions:
+    - each field must be filled
+    - number of emplyees choosen cannot exceed number of seats in the choosen car
+    - at least on employee must be a driver
+
+    After clicked on second Go! button, ride is saved to data base and can be seen on Rides list described in chapter
+    five.
+
+7. Statistics
+    Statistics page gives statistics about car usage and emplyees on the road for current year. Month is selected in
+    drop down menu and graph is shown. Graph is presenting month by the days. Blue curve gives number of cars used
+    each day. Black curve gives number of emplyees on the road each day.
+    
